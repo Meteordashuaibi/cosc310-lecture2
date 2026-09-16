@@ -43,6 +43,10 @@ class Cart:
             raise KeyError(f"Item {item_id} is not in the cart")
         
         self.lines = [line for line in self.lines if line["item_id"] != item_id]
+
+    def clear(self) -> None:
+        self.lines = []
+        
     def total(self) -> float:
         return round(sum(line["price"] * line["qty"] for line in self.lines), 2)
 
